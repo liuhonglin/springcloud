@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: gateway
+
+server:
+  port: 81
+
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:1111/eureka
+
+zuul:
+  prefix: /api
+  routes:
+    baidu:
+      path: /bd
+      url: https://www.baidu.com
+    inner:
+      path: /inner
+      url: https://www.sogou.com/
+
