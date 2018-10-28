@@ -37,6 +37,7 @@ public class GlobalExceptionHandler {
 
     /**
      * 处理所有接口数据验证异常
+     * 当使用了 @Validated + @RequestBody 注解但是没有在绑定的数据对象后面跟上 Errors 类型的参数声明的话，Spring MVC 框架会抛出 MethodArgumentNotValidException 异常
      * @param e
      * @return
      */
