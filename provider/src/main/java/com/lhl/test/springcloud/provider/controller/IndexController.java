@@ -1,8 +1,10 @@
 package com.lhl.test.springcloud.provider.controller;
 
+import com.lhl.test.springcloud.provider.exceptions.BaseBizException;
 import com.lhl.test.springcloud.service.common.CommonResponse;
 import com.lhl.test.springcloud.service.dto.UserDto;
 import org.springframework.http.HttpRequest;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -48,4 +50,19 @@ public class IndexController {
         return new CommonResponse("200", "success", stringBuilder);
     }
 
+    @PostMapping("/index4")
+    public CommonResponse indexValid(@Validated(UserDto.Update.class) @RequestBody UserDto userDto) {
+
+        return new CommonResponse("200", "maybeSuccess");
+    }
+
+    @PostMapping("/index5")
+    public CommonResponse indexValidError(@Validated(UserDto.Update.class) @RequestBody UserDto userDto, Error errors) {
+
+        if (errors.getCause() != null) {
+            throw new BaseBizException(errors.getMessage(), errors.getCause());
+        }
+
+        return new CommonResponse("200", "maybeSuccess");
+    }
 }
