@@ -62,4 +62,23 @@
         </dependencies>
     </dependencyManagement>
 
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <deployVersionSuffix>-SNAPSHOT</deployVersionSuffix>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
+            <id>test</id>
+            <properties>
+                <deployVersionSuffix>-ALPHA</deployVersionSuffix>
+            </properties>
+        </profile>
+    </profiles>
+
 </project>

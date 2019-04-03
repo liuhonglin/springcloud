@@ -56,4 +56,23 @@
 
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <conf-dir>META-INF/profiles/dev</conf-dir>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
+            <id>test</id>
+            <properties>
+                <conf-dir>META-INF/profiles/test</conf-dir>
+            </properties>
+        </profile>
+    </profiles>
+
 </project>

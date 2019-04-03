@@ -6,7 +6,38 @@
 
     <groupId>com.lhl.test</groupId>
     <artifactId>service</artifactId>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>versions-maven-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <version>2.7</version>
+                <configuration>
+                    <newVersion>1.0${deployVersionSuffix}</newVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <deployVersionSuffix>-SNAPSHOT</deployVersionSuffix>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
+            <id>test</id>
+            <properties>
+                <deployVersionSuffix>-ALPHA</deployVersionSuffix>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>
